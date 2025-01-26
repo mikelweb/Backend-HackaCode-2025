@@ -122,3 +122,18 @@ Tendremos las siguientes entidades:
 
 ### Diagrama UML
 ![card-reader](UML.png?raw=true)
+
+## Análisis de las tablas de la BBDD y sus relaciones
+
+Tendremos las siguientes tablas:
+- Person
+- Patient
+- Doctor
+- MedicalService
+- ServicePack
+- ServicePack_Service
+- Apointment
+
+### Diagrama UML
+![card-reader](TablasDB.png?raw=true)
+
