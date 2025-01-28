@@ -1,5 +1,5 @@
 # Backend-HackaCode-2025
-Backend desarrollado con Java Spring Boot para la Hackathon organizada por TodoCode
+Backend desarrollado con Java Spring Boot para la Hackathon organizada por [TodoCode](https://www.youtube.com/channel/UCz0EXCSvMwYKruljsZjCOzw)
 
 Vídeo de descripción del proyecto a realizar
 
