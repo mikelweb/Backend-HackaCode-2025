@@ -25,7 +25,18 @@ public class PersonController {
     }
 
     @RequestMapping(value = "/persons/{id_persona}", method = RequestMethod.DELETE)
-    public void delete(@PathVariable int id_persona) {
+    public void deletePerson(@PathVariable int id_persona) {
         personDao.deletePerson(id_persona);
     }
+
+    @RequestMapping(value = "/persons/{id_persona}", method = RequestMethod.PUT)
+    public void updatePerson(@PathVariable int id_persona, @RequestBody Person person) {
+        personDao.updatePerson(id_persona, person);
+    }
+
+    @RequestMapping(value = "/persons", method = RequestMethod.POST)
+    public void createPerson(@RequestBody Person person) {
+        personDao.createPerson(person);
+    }
+
 }

@@ -35,4 +35,16 @@ public class PersonDaoImpl implements PersonDao {
         Person person = this.entityManager.find(Person.class, id_persona);
         this.entityManager.remove(person);
     }
+
+    @Override
+    @Transactional
+    public void updatePerson(int id_persona, Person person) {
+        this.entityManager.merge(person);
+    }
+
+    @Override
+    @Transactional
+    public void createPerson(Person person) {
+        this.entityManager.persist(person);
+    }
 }

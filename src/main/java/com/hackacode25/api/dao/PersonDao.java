@@ -8,4 +8,6 @@ public interface PersonDao {
     Person getPerson(int id_persona);
     List<Person> getPersons();
     void deletePerson(int id_persona);
+    void updatePerson(int id_persona, Person person);
+    void createPerson(Person person);
 }
