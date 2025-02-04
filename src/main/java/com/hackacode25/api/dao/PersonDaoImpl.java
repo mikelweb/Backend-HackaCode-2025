@@ -18,8 +18,7 @@ public class PersonDaoImpl implements PersonDao {
     @Override
     @Transactional
     public Person getPerson(int id_persona) {
-        Person person = this.entityManager.find(Person.class, id_persona);
-        return person;
+        return this.entityManager.find(Person.class, id_persona);
     }
 
     @Override
@@ -38,7 +37,7 @@ public class PersonDaoImpl implements PersonDao {
 
     @Override
     @Transactional
-    public void updatePerson(int id_persona, Person person) {
+    public void updatePerson(Person person) {
         this.entityManager.merge(person);
     }
 
