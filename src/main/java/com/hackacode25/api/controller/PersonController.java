@@ -4,7 +4,6 @@ import com.hackacode25.api.dao.PersonDao;
 import com.hackacode25.api.model.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 
