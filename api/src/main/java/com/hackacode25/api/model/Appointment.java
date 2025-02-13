@@ -1,8 +1,12 @@
 package com.hackacode25.api.model;
 
+import lombok.Getter;
+import lombok.Setter;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+@Getter
+@Setter
 public class Appointment {
 
     private int id;
@@ -34,6 +38,4 @@ public class Appointment {
         this.monto_total = monto_total;
         this.pagado_o_no = pagado_o_no;
     }
-
-
 }

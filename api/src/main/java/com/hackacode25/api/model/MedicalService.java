@@ -4,7 +4,11 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "Medicalservice")
 public class MedicalService {
@@ -28,32 +32,6 @@ public class MedicalService {
         this.codigo_servicio = codigo_servicio;
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.precio = precio;
-    }
-
-    public int getCodigo_servicio() {
-        return codigo_servicio;
-    }
-    public String getNombre() {
-        return nombre;
-    }
-    public String getDescripcion() {
-        return descripcion;
-    }
-    public int getPrecio() {
-        return precio;
-    }
-
-    public void setCodigo_servicio(int codigo_servicio) {
-        this.codigo_servicio = codigo_servicio;
-    }
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-    public void setPrecio(int precio) {
         this.precio = precio;
     }
 }

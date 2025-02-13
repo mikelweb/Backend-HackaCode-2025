@@ -2,17 +2,20 @@ package com.hackacode25.api.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 @Entity
 @Table(name = "Servicepack")
 public class ServicePack {
 
     @Id
     @Column(name = "codigo_paquete")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int codigo_paquete;
     @Column(name = "lista_servicios_incluidos")
     private List<Integer> lista_servicios_incluidos;
@@ -24,26 +27,6 @@ public class ServicePack {
     public ServicePack(int codigo_paquete, List<Integer> lista_servicios_incluidos, int precio_paquete) {
         this.codigo_paquete = codigo_paquete;
         this.lista_servicios_incluidos = new ArrayList<>(lista_servicios_incluidos);
-        this.precio_paquete = precio_paquete;
-    }
-
-    public int getCodigo_paquete() {
-        return codigo_paquete;
-    }
-    public List<Integer> getLista_servicios_incluidos() {
-        return lista_servicios_incluidos;
-    }
-    public float getPrecio_paquete() {
-        return precio_paquete;
-    }
-
-    public void setCodigo_paquete(int codigo_paquete) {
-        this.codigo_paquete = codigo_paquete;
-    }
-    public void setLista_servicios_incluidos(List<Integer> lista_servicios_incluidos) {
-        this.lista_servicios_incluidos = lista_servicios_incluidos;
-    }
-    public void setPrecio_paquete(int precio_paquete) {
         this.precio_paquete = precio_paquete;
     }
 
