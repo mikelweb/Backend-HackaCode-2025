@@ -7,15 +7,14 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
+@Getter @Setter
 @Entity
 @Table(name = "Servicepack")
 public class ServicePack {
 
     @Id
     @Column(name = "codigo_paquete")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    //@GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int codigo_paquete;
     @Column(name = "lista_servicios_incluidos")
     private List<Integer> lista_servicios_incluidos;
