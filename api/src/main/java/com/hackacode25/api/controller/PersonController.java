@@ -1,10 +1,8 @@
 package com.hackacode25.api.controller;
-
-import com.hackacode25.api.dao.PersonDao;
 import com.hackacode25.api.model.Person;
+import com.hackacode25.api.service.IPersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -13,31 +11,30 @@ import java.util.List;
 public class PersonController {
 
     @Autowired
-    private PersonDao personDao;
+    private IPersonService personService;
 
     @GetMapping("/persons")
     public List<Person> getAll() {
-        return personDao.getPersons();
+        return personService.getPersons();
     }
 
     @GetMapping("/persons/{id_persona}")
     public Person getPerson(@PathVariable int id_persona) {
-        return personDao.getPerson(id_persona);
+        return personService.getPerson(id_persona);
     }
 
-    @RequestMapping(value = "/persons/{id_persona}", method = RequestMethod.DELETE)
+    @DeleteMapping("/persons/{id_persona}")
     public void deletePerson(@PathVariable int id_persona) {
-        personDao.deletePerson(id_persona);
+        personService.deletePerson(id_persona);
     }
 
-    @RequestMapping(value = "/persons/{id_persona}", method = RequestMethod.PUT)
+    @PutMapping("/persons/{id_persona}")
     public void updatePerson(@PathVariable int id_persona, @RequestBody Person person) {
-        personDao.updatePerson(person);
+        personService.updatePerson(id_persona, person);
     }
 
-    @RequestMapping(value = "/persons", method = RequestMethod.POST)
+    @PostMapping("/persons")
     public void createPerson(@RequestBody Person person) {
-        personDao.createPerson(person);
+        personService.createPerson(person);
     }
-
 }
