@@ -1,17 +1,16 @@
 package com.hackacode25.api.model;
-
-import jakarta.persistence.*;
+import jakarta.persistence.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 import java.util.Date;
 
 @Getter @Setter
 @Entity
-@Table(name = "Person")
 public class Person {
 
     @Id
-    //@GeneratedValue(strategy=GenerationType.SEQUENCE)
     protected int id_persona;
     private String nombre;
     private String apellido;

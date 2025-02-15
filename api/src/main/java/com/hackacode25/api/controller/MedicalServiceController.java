@@ -1,10 +1,8 @@
 package com.hackacode25.api.controller;
-
-import com.hackacode25.api.dao.MedicalServiceDao;
 import com.hackacode25.api.model.MedicalService;
+import com.hackacode25.api.service.IMedicalServiceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -13,30 +11,30 @@ import java.util.List;
 public class MedicalServiceController {
 
     @Autowired
-    private MedicalServiceDao medicalServiceDao;
+    private IMedicalServiceService medicalServiceService;
 
     @RequestMapping("/medicalservices")
     public List<MedicalService> getAll() {
-        return medicalServiceDao.getMedicalServices();
+        return this.medicalServiceService.getMedicalServices();
     }
 
     @RequestMapping("/medicalservices/{codigo_servicio}")
     public MedicalService getMedicalService(@PathVariable int codigo_servicio) {
-        return medicalServiceDao.getMedicalService(codigo_servicio);
+        return this.medicalServiceService.getMedicalService(codigo_servicio);
     }
 
-    @RequestMapping(value = "/medicalservices/{codigo_servicio}", method = RequestMethod.DELETE)
+    @DeleteMapping("/medicalservices/{codigo_servicio}")
     public void deleteMedicalService(@PathVariable int codigo_servicio) {
-        medicalServiceDao.deleteMedicalService(codigo_servicio);
+        this.medicalServiceService.deleteMedicalService(codigo_servicio);
     }
 
-    @RequestMapping(value = "/medicalservices/{codigo_servicio}", method = RequestMethod.PUT)
+    @PutMapping("/medicalservices/{codigo_servicio}")
     public void updateMedicalService(@PathVariable int codigo_servicio, @RequestBody MedicalService medicalService) {
-        medicalServiceDao.updateMedicalService(medicalService);
+        this.medicalServiceService.updateMedicalService(codigo_servicio, medicalService);
     }
 
-    @RequestMapping(value = "/medicalservices", method = RequestMethod.POST)
+    @PostMapping("/medicalservices")
     public void createMedicalService(@RequestBody MedicalService medicalService) {
-        medicalServiceDao.createMedicalService(medicalService);
+        this.medicalServiceService.createMedicalService(medicalService);
     }
 }

@@ -1,6 +1,7 @@
 package com.hackacode25.api.controller;
-import com.hackacode25.api.dao.ServicePackDao;
+import com.hackacode25.api.model.MedicalService;
 import com.hackacode25.api.model.ServicePack;
+import com.hackacode25.api.service.IServicePackService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -11,30 +12,30 @@ import java.util.List;
 public class ServicePackController {
 
     @Autowired
-    private ServicePackDao servicePackDao;
+    private IServicePackService servicePackService;
 
-    @RequestMapping("/servicepacks")
-    public List<Integer> getAll() {
-        return servicePackDao.getServicePacks();
+    @GetMapping("/servicepacks")
+    public List<ServicePack> getAll() {
+        return servicePackService.getServicePacks();
     }
 
-    @RequestMapping("/servicepacks/{codigo_paquete}")
+    @GetMapping("/servicepacks/{codigo_paquete}")
     public ServicePack getServicePack(@PathVariable int codigo_paquete) {
-        return servicePackDao.getServicePack(codigo_paquete);
+        return servicePackService.getServicePack(codigo_paquete);
     }
 
-    @RequestMapping(value = "/servicepacks/{codigo_paquete}", method = RequestMethod.DELETE)
+    @DeleteMapping("/servicepacks/{codigo_paquete}")
     public void deleteServicePack(@PathVariable int codigo_paquete) {
-        servicePackDao.deleteServicePack(codigo_paquete);
+        servicePackService.deleteServicePack(codigo_paquete);
     }
 
-    @RequestMapping(value = "/servicepacks/{codigo_paquete}", method = RequestMethod.PUT)
+    @PutMapping("/servicepacks/{codigo_paquete}")
     public void updateServicePack(@PathVariable int codigo_paquete, @RequestBody ServicePack servicePack) {
-        servicePackDao.updateServicePack(servicePack);
+        servicePackService.updateServicePack(codigo_paquete, servicePack);
     }
 
-    @RequestMapping(value = "/servicepacks", method = RequestMethod.POST)
+    @PostMapping("/servicepacks")
     public void createServicePack(@RequestBody ServicePack servicePack) {
-        servicePackDao.createServicePack(servicePack);
+        servicePackService.createServicePack(servicePack);
     }
 }
